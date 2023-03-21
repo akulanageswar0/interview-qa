@@ -1,0 +1,143 @@
+1. which tool have you used for implement CI/CD ? 
+I have used Jenkins for implementing CI/CD in my projects.
+
+2. Any alternate tool do you know for CI/CD ? Bamboo/Teamcity/
+Yes, some other popular CI/CD tools include Bamboo, TeamCity, and GitLab CI/CD.
+
+3. what is Continuous Integration?  
+Continuous Integration (CI) is the practice of frequently and automatically building, testing, and integrating code changes into a shared repository to ensure that the code is always in a working state.
+
+4. what type of jobs have you configured in jenkins? 
+I have configured various types of jobs in Jenkins such as Freestyle, Pipeline, and Multi-Configuration jobs.
+
+5. what are the types of jobs are available in jenkins?
+The types of jobs available in Jenkins include Freestyle, Pipeline, Multi-Configuration, Matrix, and External Job.
+
+6. what is difference b/w freestyle and pipeline? 
+Freestyle jobs are traditional Jenkins jobs that allow for free-form configuration, while Pipeline jobs use a script-based or declarative pipeline syntax to define build stages and steps
+
+7. what is pipeline? 
+Pipeline is a Jenkins plugin that allows for the definition of build pipelines as a series of stages and steps.
+
+8. what is declarative pipeline? 
+Declarative pipeline is a Pipeline plugin syntax for defining pipelines as a series of stages with a predetermined structure.
+
+9. what is difference between  declarative pipeline and script based pipeline?
+The main difference between Declarative Pipeline and Scripted Pipeline is that Declarative Pipeline provides a more structured and concise syntax, while Scripted Pipeline allows for more flexibility and control.
+
+10. write the pipeline syntax?
+pipeline {
+  agent any
+  stages {
+    stage('Build') {
+      steps {
+        // Build your application here
+      }
+    }
+    stage('Test') {
+      steps {
+        // Test your application here
+      }
+    }
+    stage('Deploy') {
+      steps {
+        // Deploy your application here
+      }
+    }
+  }
+}
+
+11. what is master/slave architecture? what is the use of master/slave?
+Master/slave architecture is a distributed build system in which a Jenkins master node manages the build and test process, and one or more Jenkins slave nodes perform the actual builds on separate machines. The use of master/slave allows for parallel builds and scalability.
+
+12. How many we can connect the slaves?
+Jenkins can connect to any number of slave nodes, but the number of slaves that can be connected depends on the resources available on the master node.
+
+13. How many ways we can provide security for your jenkins server?
+Security for Jenkins server can be provided by configuring user authentication, role-based access control (RBAC), and using SSL encryption for secure communication.
+
+14. what is sonarqube ? have you configure ? How you configure ?
+SonarQube is a code quality and security analysis tool that can be integrated with Jenkins for automated code analysis. Yes, I have configured SonarQube in my projects. The configuration involves installing the SonarQube plugin, setting up a SonarQube server, and configuring the Jenkins job to trigger the analysis.
+
+15. what type of artifactory repository tool have you used? 
+I have used Artifactory like Jfrog/Nexus as an artifact repository tool.
+
+16. what is the use of artifactory tools? 
+The main use of Artifactory tools is to store and manage binary artifacts produced during the software development process.
+
+17. How you declare a variables in pipeline?
+Variables in Jenkins pipeline can be declared using the environment directive, which defines key-value pairs of environment variables.
+
+18. what is DSL language? domain spcific language
+DSL language stands for Domain-Specific Language. In the context of Jenkins, it refers to the ability to use a programmatic syntax to define Jenkins jobs and pipelines.
+
+19. what is upstream/downstream projects? what is the use of it? which scenario you configure?
+Upstream/downstream projects in Jenkins refer to the relationships between different Jenkins jobs where a downstream project depends on an upstream project for its input or artifacts. This can be used to trigger builds automatically and ensure that dependencies are built in the correct order.
+
+20. If a have 10 repositories i github how many jobs you can configure? 10
+In theory, it is possible to configure 10 jobs for 10 repositories in GitHub, but this would depend on the specific requirements of each job and the resources available on the Jenkins server.
+
+21. Dou you have experience to install jenkins?
+Yes, I have experience installing Jenkins on both Linux and Windows platforms.
+
+22. How you configure jdk,maven,gradle...etc?
+JDK, Maven, and Gradle can be configured in Jenkins using the respective plugins and setting the path to the installation directories in the Jenkins system configuration.
+
+23. In my environment i have different version for java implementation projects is there ? How you configure multiple jdk's?
+Multiple JDKs can be configured in Jenkins
+
+24. what are the plugins have you used in your project? 
+Git 
+Build Pipeline 
+Deploy 
+Maven Integration 
+JIRA 
+Email Extension 
+Artifactory 
+SonarQube 
+Docker 
+Ansible 
+
+25. How to take backup my jenkins? thin backup plugin
+Go to your Jenkins dashboard and click on 'Manage Jenkins'.
+Click on 'Manage Plugins' and go to the 'Available' tab.
+Search for 'Thin Backup' plugin and install it.
+Once installed, go back to the Jenkins dashboard and click on 'Thin Backup' under the 'Manage Jenkins' menu.
+Click on 'Create Backup Now' to initiate the backup process.
+The backup file will be created and stored in the default backup directory. You can change the backup directory path by specifying it in the plugin settings.
+To restore the backup, go to the 'Thin Backup' page and click on 'Restore Backup' and select the backup file you want to restore.
+It is recommended to take regular backups of your Jenkins instance to avoid losing your data in case of any system failure or corruption.
+
+26. what is jenkins Home directory?  .Jenkins or /var/lib/jenkins
+The Jenkins home directory is the directory where Jenkins stores all its configuration files, plugins, logs, and job configurations. The location of the Jenkins home directory depends on the operating system and installation method used.
+On Linux systems, the default Jenkins home directory is /var/lib/jenkins. This directory contains sub-directories for logs, plugins, jobs, and other configurations. This location is used by default when you install Jenkins using package managers like apt or yum.
+On Windows systems, the Jenkins home directory is usually located in the user directory like C:\Users\<username>\.jenkins. This directory also contains sub-directories for logs, plugins, jobs, and other configurations.
+The Jenkins home directory is important because it contains all the data and settings for your Jenkins instance. It is recommended to take regular backups of this directory to avoid losing your configurations and data in case of any system failure or corruption.
+
+27. How to deleted old builds automatically? ---> Discard old build options 
+You can use the "Discard old builds" option in Jenkins to automatically delete old builds of your jobs. Here are the steps to configure this:
+
+Go to the job configuration page in Jenkins.
+Scroll down to the "Build History" section and click on the "Discard old builds" checkbox.
+Enter the number of builds you want to keep in the "Days to keep builds" or "Max # of builds to keep" fields.
+Save the configuration changes.
+With this configuration, Jenkins will automatically delete old builds of the job when the specified number of days or maximum number of builds is reached. You can also configure this option for all the jobs in your Jenkins instance by going to "Manage Jenkins" -> "Configure System" and scrolling down to the "Global Build Discarders" section.
+
+28. How to configure multiple environment deployment? using parameterised options from build
+To configure multiple environment deployment in Jenkins, you can use parameterized options in the build configuration. Here are the steps to configure this:
+
+Go to the job configuration page in Jenkins.
+Scroll down to the "Build" section and click on the "Add build step" dropdown menu.
+Select the "Execute shell" option (or any other build step that you want to use for deployment).
+In the "Command" field, specify the command that you want to use to deploy your application to different environments. For example, you can use a script that takes an environment variable as an input and deploys the application accordingly.
+Click on the "Add Parameter" dropdown menu and select "Choice Parameter".
+In the "Name" field, enter a name for the parameter (e.g. "ENVIRONMENT").
+In the "Choices" field, enter a list of environment names that you want to deploy to (e.g. "DEV", "QA", "PROD").
+Save the configuration changes.
+With this configuration, Jenkins will prompt the user to select an environment name when the job is run. The selected environment name will be passed as an input to the build step command, which can use it to deploy the application to the appropriate environment. This allows you to deploy your application to multiple environments using a single Jenkins job.
+
+29. Other ways of Jenkins Backup?
+Manual backup: You can manually backup the Jenkins home directory, which contains all the job configurations, build logs, and other important files. You can use a tool like rsync or tar to create a backup of the Jenkins home directory and store it on an external storage device or cloud storage.
+Scripted backup: You can write a script that runs regularly to backup the Jenkins home directory and other important files like the plugin directory, Jenkins logs, and configuration files. This can be scheduled to run automatically using a tool like cron or Windows Task Scheduler.
+Cloud backup: You can use a cloud backup service like Amazon S3 or Google Cloud Storage to backup your Jenkins instance. These services provide easy-to-use APIs to automate the backup process and provide high durability and availability.
+Docker backup: If your Jenkins instance is running inside a Docker container, you can use the Docker commit command to create a backup of the container as an image. This image can be saved to a registry or exported as a tar file for backup.
