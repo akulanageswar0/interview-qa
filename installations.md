@@ -26,8 +26,7 @@ mkdir test && cd test
   "name": "docker_nodejs_app",
   "version": "1.0.0",
   "description": "Node.js on Docker",
-  "author": "Ki Hong <first.bogo@example.com>",
-  "license": "MIT",
+   "license": "MIT",
   "main": "server.js",
   "scripts": {
     "start": "node server.js"
