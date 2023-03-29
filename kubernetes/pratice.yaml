@@ -1,0 +1,22 @@
+To taint the node:
+kubectl taint nodes controlplane key1=value1:NoSchedule 
+
+To remove the taint added by the command above, you can run:
+kubectl taint nodes controlplane key1=value1:NoSchedule-
+
+apiVersion: v1
+kind: Pod
+metadata:
+  name: nginx
+  labels:
+   env: test
+spec:
+  containers:
+  - name: nginx
+    image: nginx
+    imagePullPolicy: IfNotPresent
+  tolerations:
+  - key: "example-key"
+    operator: "Exists"
+    effect: "NoSchedule"
+
