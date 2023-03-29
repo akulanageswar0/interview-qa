@@ -1,4 +1,4 @@
-<p>
+<p
 ```
 1) what is taint and toleration 
 Taint and Toleration: In Kubernetes, taints are used to mark nodes as unsuitable for certain pods, while tolerations are used to indicate which pods can tolerate a taint.
