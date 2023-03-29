@@ -1,3 +1,4 @@
+```
 1) what is taint and toleration 
 Taint and Toleration: In Kubernetes, taints are used to mark nodes as unsuitable for certain pods, while tolerations are used to indicate which pods can tolerate a taint.
 
@@ -110,3 +111,4 @@ There are several tools available for monitoring Kubernetes clusters and contain
 
 31) Job should be terminated after 40 seconds ? ActiveDeadLineSeconds: 40
 You can set the activeDeadlineSeconds field in a Job specification to specify the maximum amount of time that a Job should be allowed to run before being terminated. Once this limit is reached, the Job will be terminated, and any running pods will be deleted.
+```
