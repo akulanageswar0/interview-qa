@@ -1,6 +1,7 @@
 <p align="right" width="100%">
 
 1) what is taint and toleration?
+
 Taint and Toleration: In Kubernetes, taints are used to mark nodes as unsuitable for certain pods, while tolerations are used to indicate which pods can tolerate a taint.
 
 2) node affinity an pod affinity?
@@ -112,4 +113,11 @@ There are several tools available for monitoring Kubernetes clusters and contain
 
 31) Job should be terminated after 40 seconds ? ActiveDeadLineSeconds: 40
 You can set the activeDeadlineSeconds field in a Job specification to specify the maximum amount of time that a Job should be allowed to run before being terminated. Once this limit is reached, the Job will be terminated, and any running pods will be deleted.
+
+32) Ingress VS Loadbalancer ?
+Both Ingress and LoadBalancer are used to expose services outside of the Kubernetes cluster.
+LoadBalancer creates a cloud provider's load balancer to expose a service externally. It provides a simple layer 4 (TCP/UDP) load balancing.
+Ingress is an API object that manages external access to the services inside the cluster. It acts as a reverse proxy and provides a more advanced layer 7 (HTTP/HTTPS) load balancing. It can be configured with rules and annotations to support advanced routing and load balancing features.
+So, if you need a simple way to expose a service externally, use LoadBalancer. But if you need advanced routing and load balancing features, use Ingress.
+
 </p>
