@@ -16,7 +16,10 @@ Job: A Job is used for batch processing tasks, where a certain number of pods ru
 CronJob: A CronJob is similar to a Job, but it runs on a predefined schedule. This is useful for running periodic tasks, such as backups or cleanup jobs.
 
 </em>
-Kubernetes (K8s) offers several deployment strategies for managing and rolling out updates to containerized applications. Here are some of the most common types of deployment strategies in K8s:
+Kubernetes (K8s) offers several deployment strategies for managing and rolling out updates to containerized applications. Here are some of the most common types of deployment strategies in K8s.
+
+
+
 <em>
 Rolling deployment—replaces pods running the old version of the application with the new version, one by one, without downtime to the cluster.
 
