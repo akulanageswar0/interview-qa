@@ -1,4 +1,5 @@
-```
+<p align="right" width="100%">
+
 1) What is Ansible, and what is it used for?
 Ansible is an open-source automation tool that simplifies software configuration management, application deployment, and infrastructure orchestration. Ansible uses a declarative language to describe the state of a system and automates tasks that would otherwise be performed manually.
 
@@ -28,6 +29,5 @@ Ansible communicates with remote hosts using SSH (Secure Shell) protocol. Ansibl
 
 10) How do you define variables in Ansible?
 Variables can be defined in several ways in Ansible, such as in the playbook itself, in inventory files, or in separate variable files. Variables can also be passed to Ansible on the command line using the --extra-vars option.
-```
 
-
+</p>
