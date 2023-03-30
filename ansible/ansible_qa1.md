@@ -41,4 +41,43 @@ Ansible communicates with remote hosts using SSH (Secure Shell) protocol. Ansibl
 
 Variables can be defined in several ways in Ansible, such as in the playbook itself, in inventory files, or in separate variable files. Variables can also be passed to Ansible on the command line using the --extra-vars option.
 
+11) What is an Ansible vault, and why is it used?
+An Ansible vault is a feature that allows you to encrypt sensitive data, such as passwords, API keys, and certificates, used in playbooks and roles. The vault encrypts the data using a password or a key file, which must be provided to decrypt the data during playbook execution. This helps to protect sensitive information from unauthorized access.
+
+12) What is the difference between a task and a handler in Ansible?
+
+A task is a piece of code that performs a specific action, such as installing a package or configuring a service. A handler is a task that is triggered only when a specific event occurs, such as a configuration file being updated or a service being restarted. Handlers are used to prevent unnecessary restarts of services and reduce the impact on the system.
+
+13) How do you run an Ansible playbook?
+
+To run an Ansible playbook, you need to use the "ansible-playbook" command followed by the name of the playbook file. For example, if your playbook is named "webserver.yml", you can run it using the command "ansible-playbook webserver.yml". You can also specify the target hosts, user, and other options using command-line arguments.
+
+14) What is Ansible Tower, and what are its benefits?
+
+Ansible Tower is a web-based interface and automation engine for Ansible that provides a centralized platform for managing and monitoring Ansible workflows. Ansible Tower allows you to define roles and permissions, schedule jobs, create job templates, and integrate with other systems, such as LDAP and Git. It also provides a dashboard for monitoring job status and logs, making it easier to troubleshoot issues and improve productivity.
+
+15) What is the role of Ansible facts, and how are they collected?
+
+Ansible facts are system and environment variables that are automatically collected by Ansible when it connects to a remote host. Ansible facts provide information about the system, such as the operating system, kernel version, IP address, and hostname. Ansible facts are used in playbooks and roles to conditionally execute tasks based on the system state. Ansible facts are collected using various methods, such as the "setup" module, which runs automatically when Ansible connects to a host, and custom scripts or modules.
+
+16) What is an Ansible callback, and how is it used?
+
+An Ansible callback is a plugin that allows you to customize the output of Ansible during playbook execution. Callbacks can be used to generate custom reports, send notifications, and log data to external systems. Ansible provides several built-in callbacks, such as the default callback, which prints results to the console, and the mail callback, which sends email notifications.
+
+17) What is the difference between a playbook and a role in Ansible?
+
+A playbook is a set of tasks that are executed against a group of hosts defined in the inventory file. A role is a set of tasks, variables, and files that can be reused across multiple playbooks. Playbooks are used to orchestrate complex workflows, while roles are used to encapsulate functionality and promote code reuse.
+
+18) What is an Ansible ad-hoc command, and how is it used?
+
+An Ansible ad-hoc command is a single-line command that performs a quick task on one or more hosts without the need to write a full playbook. Ad-hoc commands can be used to perform simple tasks, such as checking the uptime of a server or updating a package. Ad-hoc commands are executed using the "ansible" command followed by the target hosts and the module name.
+
+19) What is the difference between Ansible and Ansible Tower?
+
+Ansible is an open-source automation tool that provides a simple way to automate infrastructure, application, and network management tasks. Ansible Tower is a commercial version of Ansible that provides additional features, such as a web-based user interface, a REST API, and enterprise-level support. Ansible Tower is designed for larger organizations with complex automation needs.
+
+20)How do you manage dependencies in Ansible roles?
+
+Dependencies can be defined in the "meta/main.yml" file of an Ansible role using the "dependencies" keyword. Dependencies can be other roles, collections, or roles hosted on a Galaxy server. Ansible will automatically download and install the required dependencies when the role is executed. You can also specify the version and other options for each dependency.
+
 </p>
