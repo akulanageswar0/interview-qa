@@ -1,0 +1,8 @@
+1) Create new EBS volume from the console and attach to running ec2 instance
+2) Login to server and create new fs
+3) lslbk  ==> to check the if newly created volume is available
+4) mkfs.ext4 /dev/xvdf ==> to crate new file system of ext4
+5) mkdir data ==> to create a directory
+6) mount /dev/xvdf data ==> to moun the fs with directory
+7) Finally check the df -h
+8) Also need to udpate in /etc/fstab

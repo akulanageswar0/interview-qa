@@ -1,0 +1,83 @@
+Jenkins Tasks:
+Automating manual process with Jenkins pipelines
+Migration of pipelines from free styel jobs to pipelines jobs
+adding multiple stages to the existing pipelines
+Upgradation Jenkins, Install and Configure plugins
+Adopting and Implementing best pratices in Jenkins
+   Clearing old build logs
+   timeout
+   shared library
+   
+Monitoring Tasks:
+Implementing monitoring of applications and clusters
+Admin activities in prometheus and grafana
+  adding data source in grafana
+  adding new targets, customer rules and alerts in prometheus
+  creating customer dashboards in grafana
+
+====================================================
+Containerization tasks:
+Migration of applications from vM based deployments to containers
+
+Call Meeting with DEV Team to collect requirements
+     
+    Application Environment
+	Configs
+	Env variables
+	command build and start
+	ports
+	test the applicaiton (command)
+	health check
+	
+
+Understanding application, writing dockerfiles and deploying dockerized applicaiton on kubernetes.
+Creating Helm charts(writing multiple kubernetes manifest files like deployment, service,hpa, configmaps and ingress
+Deploying application manually on k8s cluster and teting the application with few test cases
+
+Once application is working fine we start creating pipelines to deploy application on k8s cluster.
+docker image creation, image scanning, push to repository and deploying to k8s and monitor
+  5xx, 4xx
+  Success rate
+  latency
+  Resource utilization(memory and cpu)
+  restart
+  other applicaiton errors
+  
+
+Prepare helm charts for higher environments like dev,uat and prod
+Handover calls
+educate dev teams
+support dev teams in deployments and issue
+
+
+Admins tasks:
+Creating namespaces
+changing resource quota
+adding users to namespaces on request basis
+
+Kuberenetes Issues:
+Out of memory
+deployment issues(image, service stop etc,)
+probes (readiness, livesprobes and startupprobes)
+readiness out of rotation issue, port forwarding can be used to for testing the issue
+config issues(timeout and paths issues)(while using configmap, subpath need to be used)
+Permission issues, copy to temp and move to different dir
+Container should not be used with root users
+ephemeral containers
+
+
+===========================================
+Ansible:
+automating installation and configuration of php/python appllication servers
+Ansible
+
+Architecture: Push mechanism
+Advantages of ansible:
+1.agentless
+2.no need to install nodes on remote servers
+3. totally relies on SSH
+4. Apple, NASA, JUNIPER uses ansible
+
+Diff b/w ansible and other config tool
+1.puppet and chef uses ruby-DSL but ansible uses YAML(python)
+2. ansible uses push mechanism where as puppet,chef uses pull mechanism 

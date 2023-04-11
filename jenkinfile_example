@@ -1,0 +1,28 @@
+==================================JenkinsScripted pipeline========================
+properties([parameters(
+    [choice(choices: ['master', 'dev', 'one'],
+    description: 'Select branch to build', name: 'branch')])
+  ])
+node {
+    stage ('checkout'){
+        echo "Pulling changes ${params.branch}"
+      git url: 'https://github.com/javahometech/myweb', branch: "${params.branch}"
+    }
+}
+==================================Jenkins declarative pipeline========================
+properties([parameters(
+    [choice(choices: ['master', 'dev', 'one'],
+    description: 'Select branch to build', name: 'branch')])
+    ])
+
+pipeline {
+  agent any
+      stages{
+       stage ('scm checkout'){
+        steps {
+        echo "Pulling changes ${params.branch}"
+      git url: 'https://github.com/javahometech/myweb', branch: "${params.branch}"
+    }
+   }
+   }
+}

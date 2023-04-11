@@ -1,0 +1,61 @@
+tee is powerful filter
+sed -i '/^$/d' ==> Ways to remove empty lines in a file on Linux
+# awk 'NF > 0' main.txt > out.txt ==> Also can use AWK command line tool to remove blank lines from a file. 
+echo $0 --> display the shell
+
+cat > MiT
+cutl -c1,7 MiT
+
+echo "One" > one
+echo "Two" > two
+paste -s one two
+sort names
+sort -r names
+sort -n names
+nl names
+nl names  > names1
+sort -n names
+sort -n names1
+sort -rn names1
+sort names1
+sort -oresult MiT names
+cat result
+cal
+cal |tee
+cal |tee AuG16
+cat AuG16
+
+cat MiT
+cat MiT |wc -l
+cat MiT |wc -l |tee lines
+ls -tlr
+===================================================================
+---
+ - name: Find files - Playbook
+   hosts: appservers
+   tasks:
+
+   # Case1:  when Search String and Modified time is mentioned
+   - name:  Find command with *SEARCH STRING* and *MODIFIED TIME*
+     shell: "find {{Directory}} -name '{{SearchString}}' -mtime '{{mtime}}'"
+     register: case1output
+     when: Directory is defined and SearchString is defined and mtime is defined
+     ignore_errors: true
+
+   # Case2: when Only Search String is mentioend but NOT Modified time(age)
+   - name:  Find command with only with *SEARCH STRING*
+     shell: "find {{Directory}} -name '{{SearchString}}' "
+     register: case2output
+     when: Directory is defined and SearchString is defined and mtime is not defined
+     ignore_errors: true
+     
+   # In case of Case1 Success
+   - name: Case1 Output -- Output will be displayed only if Case is Success (or) it will be skipped 
+     debug: var=case1output.stdout_lines
+     when: case1output.stdout_lines is defined
+
+   # In case of Case2 Success
+   - name: Case2 Output -- Output will be displayed only if Case is Success (or) it will be skipped 
+     debug: var=case2output.stdout_lines
+     when: case2output.stdout_lines is defined
+     =============================================================
