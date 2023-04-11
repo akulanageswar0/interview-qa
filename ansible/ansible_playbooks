@@ -1,0 +1,208 @@
+Ansible Check Mode or Dry Run: 
+ex:
+---
+- hosts: all
+  tasks:
+  - yum:
+     name: httpd
+	 state: latest
+ansible-playbook playbook.yml --check
+===========================================
+Start at:
+ex:
+---
+- hosts: all
+  tasks:
+  - name: Install htppd
+    yum:
+     name: httpd
+	 state: latest
+  - name: Start htppd service
+    service:
+     name: httpd
+	 state: started
+
+ansible-playbook playbook.yml --start-at-task "Start httpd service"
+===========================================================
+Start at:
+ex:
+---
+- hosts: all
+  tasks:
+  - name: Install htppd
+    yum:
+     name: httpd
+	 state: latest
+	tags:
+	  - httpd package
+  - name: Start htppd service
+    service:
+     name: httpd
+	 state: started
+
+ansible-playbook playbook.yml --tags "httpd package"
+ansible-playbook playbook.yml --skip-tags "httpd package" 
+===========================================================
+---
+- name: print hello message
+  hosts: all
+  tasks:
+  - debug:
+     msg: "hi"
+=============================================================
+---
+- name: print hello message
+  hosts: all
+  tasks:
+  - debug:
+     var: ansible_facts
+=============================================================
+ansible localhost -m setup |grep distribution_version
+
+We are trying to print the server architecture. However it prints that the variable is not defined
+---
+- hosts: db1
+  gather_facts: True
+  tasks:
+    - name: Get server architecture
+      debug:
+        var: ansible_facts.architecture
+
+==================================
+Install pip if not present
+sudo yum install epel-release
+sudo yum install python-pip
+
+Install Ansible using pip==>sudo pip install ansible
+Upgrade Ansible using pip==> sudo pip install --upgrade ansible
+Install Specific Version of Ansible using pip==>sudo pip install ansible==2.4
+
+Install Ansible package using yum.
+sudo yum install epel-release -y ; sudo yum install ansible -y
+
+
+==================
+On Ansible controller node generate an SSH key with filename ansible under default location (~/.ssh).
+ssh-keygen -f ~/.ssh/ansible
+
+inventoryfile
+web1 ansible_host=172.20.1.100 ansible_ssh_private_key_file=~/.ssh/ansible ansible_user=ansible
+=============================================================
+---
+- hosts: web2
+  gather_facts: false
+  tasks:
+    - shell: dpkg -l git
+      register: check_if_git_installed
+      ignore_errors: true
+
+    - debug: var=check_if_git_installed
+    - shell: echo 'Oops, git is missing' > /tmp/is_git_installed.txt
+      when: check_if_git_installed.rc != 0
+
+    - shell: git --version > /tmp/is_git_installed.txt
+      when: check_if_git_installed.rc == 0
+=============================================================
+---
+- name: copy script if not present
+  gather_facts: yes
+  hosts: web2
+  vars:
+    remote_dest: /usr/local/bin/report_status.sh
+  tasks:
+    - copy:
+        src: report_status.sh
+        dest: "{{remote_dest}}"
+      when: copy_file_only_if is defined and copy_file_only_if|bool
+=============================================================
+
+---
+- hosts: web2
+  gather_facts: no
+  vars:
+    remote_dest: /usr/local/bin/report_status.sh
+  tasks:
+    - stat:
+        path: "{{remote_dest}}"
+      register: file_status
+
+    - debug: var=file_status
+    - shell: echo "File report_status.sh is not executable, making it executable..." > /tmp/change.log
+      when: file_status.stat.exists and file_status.stat.executable == false
+
+    - name: Make the script executable
+      file:
+        path: "{{remote_dest}}"
+        mode: 0775
+=============================================================
+---
+- hosts: web2
+  gather_facts: no
+  tasks:
+    - name: Run a script
+      shell: sh /usr/local/bin/report_status.sh
+      register: test
+    - debug:
+        var: test
+	
+=============================================================
+---
+- hosts: web2
+  gather_facts: no
+  tasks:
+    - name: install nginx
+      apt: name=nginx state=present
+      tags: [install_core]
+
+    - name: install extra packages
+      apt: name={{item}}
+      with_items: "{{extra_packages}}"
+      when: extra_packages is defined and extra_packages == "htop"
+      
+=============================================================
+---
+- hosts: all
+  tasks:
+    - name: Install and configure httpd web server
+      when: ansible_facts['distribution'] == 'CentOS'
+      block:
+        - yum:
+            name: httpd
+            state: present
+        - service:
+            name: httpd
+            state: started
+=============================================================
+---
+- hosts: all
+  tasks:
+    - name: Create a file
+      block:
+        - file:
+            path: /tmp/file.txt
+            state: touch
+        - name: This will fail
+          command: /bin/false
+        - debug:
+            msg: "This will never run"
+      always:
+        - debug:
+            msg: "This task always runs!"
+
+=============================================================
+---
+- hosts: all
+  tasks:
+    - name: Install and configure httpd web server
+      when: ansible_facts['distribution'] == 'CentOS'
+      block:
+        - yum:
+            name: httpd
+            state: present
+        - service:
+            name: httpd
+            state: started
+      rescue:
+        - debug:
+            msg: "Playbook has failed for {{ inventory_hostname }} node"
+=============================================================

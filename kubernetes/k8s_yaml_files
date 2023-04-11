@@ -190,3 +190,26 @@ kubectl config view --kubeconfig=/root/my-kube-config -o jsonpath='{.users[*].na
 kubectl get pv --sort-by=.spec.capacity.storage > /opt/outputs/storage-capacity-sorted.txt
 kubectl config view --kubeconfig=my-kube-config -o jsonpath="{.contexts[?(@.context.user=='aws-user')].name}" > /opt/outputs/aws-context-name
 
+============================
+To taint the node:
+kubectl taint nodes controlplane key1=value1:NoSchedule 
+
+To remove the taint added by the command above, you can run:
+kubectl taint nodes controlplane key1=value1:NoSchedule-
+
+apiVersion: v1
+kind: Pod
+metadata:
+  name: nginx
+  labels:
+   env: test
+spec:
+  containers:
+  - name: nginx
+    image: nginx
+    imagePullPolicy: IfNotPresent
+  tolerations:
+  - key: "example-key"
+    operator: "Exists"
+    effect: "NoSchedule"
+
