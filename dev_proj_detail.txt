@@ -99,6 +99,7 @@ Backup
 Docker
 Parameterized Trigger
 Ansible
+SonarQube Scanner
 
 Ansible Tower only CentOS
 
