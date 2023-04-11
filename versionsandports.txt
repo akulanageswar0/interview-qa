@@ -1,0 +1,10 @@
+Prometheus: 9090
+Grafana: 3000
+NodeExporter: 9100
+Jenkin: 8080
+Jfrog: 8081
+sonarqube: 9000
+
+====Version==============
+Docker: 23.0.3
+K8S: v1.25
