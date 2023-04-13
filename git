@@ -1,0 +1,24 @@
+The git rebase command is used to apply changes from one branch to another, typically used to integrate changes from a feature branch into a main branch. Here's an example use case for git rebase:
+
+Suppose you are working on a feature branch feature-branch that was branched off the main branch a few weeks ago. Meanwhile, several changes have been made to the main branch that you want to incorporate into your feature-branch. You could merge the main branch into feature-branch, but this would create an unnecessary merge commit that clutters the commit history. Instead, you can use git rebase to apply the changes from main directly onto your feature-branch.
+
+Here are the steps to do this:
+
+Checkout the main branch and pull any changes that have been made since you branched off feature-branch:
+
+git checkout main
+git pull
+Checkout the feature-branch:
+
+git checkout feature-branch
+Use git rebase to apply the changes from main onto feature-branch:
+
+git rebase main
+This will apply the changes from main onto feature-branch, one by one, and prompt you to resolve any conflicts that may arise.
+
+Push the updated feature-branch to the remote repository:
+
+git push --force origin feature-branch
+Note that using --force is necessary because the commit history of feature-branch has been rewritten.
+
+By using git rebase instead of git merge, you keep a clean and linear commit history, which makes it easier to understand the evolution of your codebase.
